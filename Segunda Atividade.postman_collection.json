@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "8ac60596-7bc5-4f0c-818b-0e8c1bcff649",
+		"name": "Segunda Atividade",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://omdbapi.com?t=Stranger Things&apikey=f7359a27",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a7291b65-19ab-4d18-8d65-0d528fc14e6e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"USA\");",
+							"});",
+							"",
+							"pm.test(\"JSON body check\", function () {",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    tests[\"Verify if Title{} is Stranger Things\"] = jsonData.Title === \"Stranger Things\";",
+							"    tests[\"Verify if Title{} is 2016\"] = jsonData.Year === \"2016–\";",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://omdbapi.com?t=Stranger Things&apikey=f7359a27",
+					"protocol": "http",
+					"host": [
+						"omdbapi",
+						"com"
+					],
+					"query": [
+						{
+							"key": "t",
+							"value": "Stranger Things"
+						},
+						{
+							"key": "apikey",
+							"value": "f7359a27"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://omdbapi.com?t=Toy Story&apikey=f7359a27",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "38f714c0-d551-4448-af2e-805706ec3aef",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(8000);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"USA\");",
+							"});",
+							"",
+							"pm.test(\"JSON body check\", function () {",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    tests[\"Verify if Title{} is Toy Story\"] = jsonData.Title === \"Toy Story\";",
+							"    tests[\"Verify if Year{} is 1995\"] = jsonData.Year === \"1995\";",
+							"    tests[\"Verify if Rated{} is G\"] = jsonData.Rated === \"G\";",
+							"    tests[\"Verify if Runtime{} is 81 min\"] = jsonData.Runtime === \"81 min\";",
+							"    tests[\"Verify if Language{} is English\"] = jsonData.Language === \"English\";",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://omdbapi.com?t=Toy Story&apikey=f7359a27",
+					"protocol": "http",
+					"host": [
+						"omdbapi",
+						"com"
+					],
+					"query": [
+						{
+							"key": "t",
+							"value": "Toy Story"
+						},
+						{
+							"key": "apikey",
+							"value": "f7359a27"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
